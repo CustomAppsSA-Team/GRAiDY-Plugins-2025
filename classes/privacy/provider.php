@@ -18,19 +18,19 @@
  * Privacy Provider file.
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- namespace local_graidy\privacy;
+namespace local_graidy\privacy;
 
- /**
-  * Privacy Subsystem implementing null_provider.
-  *
-  * @package    local_graidy
-  * @copyright  2024 onwards We Envision Ai
-  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-  */
+/**
+ * Privacy Subsystem implementing null_provider.
+ *
+ * @package    local_graidy
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class provider implements \core_privacy\local\metadata\null_provider {
 
     /**

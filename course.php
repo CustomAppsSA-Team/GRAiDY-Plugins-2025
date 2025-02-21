@@ -1,23 +1,32 @@
-<style>
-
-    .activity-header{
-        display: none !important;
-    }
-</style>
-
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Displays Graidy portal in an iframe, tied to a specific course ID.
+ * Course page for Local GRAiDY plugin.
  *
  * URL format: /local/graidy/course.php?id=COURSEID
  *
  * @package    local_graidy
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 require_once(__DIR__ . '/../../config.php');
 
 // Get the course ID from the URL.
-//$courseid = required_param('id', PARAM_INT);
 $courseid = required_param('courseid', PARAM_INT); // Required course ID.
 
 // Load the course object.
@@ -57,7 +66,11 @@ echo $OUTPUT->header();
 $graidybaseurl = get_config('local_graidy', 'baseurl');
 $organizationtoken = get_config('local_graidy', 'organizationtoken');
 $token = local_graidy_get_or_create_token($USER->id);
-$iframeurl = $graidybaseurl . '/moodle/plugin/course/' . $courseid . '/' . $USER->id . '/' . $token . '/' . $organizationtoken;
+
+// Set iframe url.
+$iframeurl = $graidybaseurl . '/moodle/plugin/course/' . $courseid . '/' . $USER->id
+. '/' . $token . '/' . $organizationtoken;
+
 $output = $PAGE->get_renderer('local_graidy');
 echo $output->render_iframe($iframeurl);
 

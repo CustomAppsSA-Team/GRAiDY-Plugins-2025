@@ -18,14 +18,14 @@
  * Web service for get_course_info
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace local_graidy\external\course;
+
 defined('MOODLE_INTERNAL') || die;
 
-//require_once("{$CFG->libdir}/externallib.php");
 require_once($CFG->libdir . '/externallib.php');
 
 use external_api;
@@ -41,7 +41,7 @@ use moodle_exception;
  * Class for get_course_info
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class get_course_info extends external_api {
@@ -65,82 +65,149 @@ class get_course_info extends external_api {
      */
     public static function execute_returns() {
         return new external_multiple_structure(
-                new external_single_structure(
-                        [
-                            'id' => new external_value(PARAM_INT, 'course id'),
-                            'shortname' => new external_value(PARAM_RAW, 'course short name'),
-                            'categoryid' => new external_value(PARAM_INT, 'category id'),
-                            'categorysortorder' => new external_value(PARAM_INT,
-                                    'sort order into the category', VALUE_OPTIONAL),
-                            'fullname' => new external_value(PARAM_RAW, 'full name'),
-                            'displayname' => new external_value(PARAM_RAW, 'course display name'),
-                            'idnumber' => new external_value(PARAM_RAW, 'id number', VALUE_OPTIONAL),
-                            'summary' => new external_value(PARAM_RAW, 'summary'),
-                            'summaryformat' => new external_format_value('summary'),
-                            'format' => new external_value(PARAM_PLUGIN,
-                                    'course format: weeks, topics, social, site,..'),
-                            'showgrades' => new external_value(PARAM_INT,
-                                    '1 if grades are shown, otherwise 0', VALUE_OPTIONAL),
-                            'newsitems' => new external_value(PARAM_INT,
-                                    'number of recent items appearing on the course page', VALUE_OPTIONAL),
-                            'startdate' => new external_value(PARAM_INT,
-                                    'timestamp when the course start'),
-                            'enddate' => new external_value(PARAM_INT,
-                                    'timestamp when the course end'),
-                            'numsections' => new external_value(PARAM_INT,
-                                    '(deprecated, use courseformatoptions) number of weeks/topics',
-                                    VALUE_OPTIONAL),
-                            'maxbytes' => new external_value(PARAM_INT,
-                                    'largest size of file that can be uploaded into the course',
-                                    VALUE_OPTIONAL),
-                            'showreports' => new external_value(PARAM_INT,
-                                    'are activity report shown (yes = 1, no =0)', VALUE_OPTIONAL),
-                            'visible' => new external_value(PARAM_INT,
-                                    '1: available to student, 0:not available', VALUE_OPTIONAL),
-                            'hiddensections' => new external_value(PARAM_INT,
-                                    '(deprecated, use courseformatoptions) How the hidden sections in the course are displayed
+            new external_single_structure(
+                [
+                    'id' => new external_value(PARAM_INT, 'course id'),
+                    'shortname' => new external_value(PARAM_RAW, 'course short name'),
+                    'categoryid' => new external_value(PARAM_INT, 'category id'),
+                    'categorysortorder' => new external_value(
+                        PARAM_INT,
+                        'sort order into the category',
+                        VALUE_OPTIONAL
+                    ),
+                    'fullname' => new external_value(PARAM_RAW, 'full name'),
+                    'displayname' => new external_value(PARAM_RAW, 'course display name'),
+                    'idnumber' => new external_value(PARAM_RAW, 'id number', VALUE_OPTIONAL),
+                    'summary' => new external_value(PARAM_RAW, 'summary'),
+                    'summaryformat' => new external_format_value('summary'),
+                    'format' => new external_value(
+                        PARAM_PLUGIN,
+                        'course format: weeks, topics, social, site,..'
+                    ),
+                    'showgrades' => new external_value(
+                        PARAM_INT,
+                        '1 if grades are shown, otherwise 0',
+                        VALUE_OPTIONAL
+                    ),
+                    'newsitems' => new external_value(
+                        PARAM_INT,
+                        'number of recent items appearing on the course page',
+                        VALUE_OPTIONAL
+                    ),
+                    'startdate' => new external_value(
+                        PARAM_INT,
+                        'timestamp when the course start'
+                    ),
+                    'enddate' => new external_value(
+                        PARAM_INT,
+                        'timestamp when the course end'
+                    ),
+                    'numsections' => new external_value(
+                        PARAM_INT,
+                        '(deprecated, use courseformatoptions) number of weeks/topics',
+                        VALUE_OPTIONAL
+                    ),
+                    'maxbytes' => new external_value(
+                        PARAM_INT,
+                        'largest size of file that can be uploaded into the course',
+                        VALUE_OPTIONAL
+                    ),
+                    'showreports' => new external_value(
+                        PARAM_INT,
+                        'are activity report shown (yes = 1, no =0)',
+                        VALUE_OPTIONAL
+                    ),
+                    'visible' => new external_value(
+                        PARAM_INT,
+                        '1: available to student, 0:not available',
+                        VALUE_OPTIONAL
+                    ),
+                    'hiddensections' => new external_value(
+                        PARAM_INT,
+                        '(deprecated, use courseformatoptions) How the hidden sections in the course are displayed
                                     to students',
-                                    VALUE_OPTIONAL),
-                            'groupmode' => new external_value(PARAM_INT, 'no group, separate, visible',
-                                    VALUE_OPTIONAL),
-                            'groupmodeforce' => new external_value(PARAM_INT, '1: yes, 0: no',
-                                    VALUE_OPTIONAL),
-                            'defaultgroupingid' => new external_value(PARAM_INT, 'default grouping id',
-                                    VALUE_OPTIONAL),
-                            'timecreated' => new external_value(PARAM_INT,
-                                    'timestamp when the course have been created', VALUE_OPTIONAL),
-                            'timemodified' => new external_value(PARAM_INT,
-                                    'timestamp when the course have been modified', VALUE_OPTIONAL),
-                            'enablecompletion' => new external_value(PARAM_INT,
-                                    'Enabled, control via completion and activity settings. Disbaled,
-                                        not shown in activity settings.',
-                                    VALUE_OPTIONAL),
-                            'completionnotify' => new external_value(PARAM_INT,
-                                    '1: yes 0: no', VALUE_OPTIONAL),
-                            'lang' => new external_value(PARAM_SAFEDIR,
-                                    'forced course language', VALUE_OPTIONAL),
-                            'forcetheme' => new external_value(PARAM_PLUGIN,
-                                    'name of the force theme', VALUE_OPTIONAL),
-                            'courseformatoptions' => new external_multiple_structure(
-                                new external_single_structure(
-                                    ['name' => new external_value(PARAM_ALPHANUMEXT, 'course format option name'),
-                                        'value' => new external_value(PARAM_RAW, 'course format option value'),
-                                    ]), 'additional options for particular course format', VALUE_OPTIONAL
-                             ),
-                            'showactivitydates' => new external_value(PARAM_BOOL, 'Whether the activity dates are shown or not'),
-                            'showcompletionconditions' => new external_value(PARAM_BOOL,
-                                'Whether the activity completion conditions are shown or not'),
-                            'customfields' => new external_multiple_structure(
-                                new external_single_structure(
-                                    ['name' => new external_value(PARAM_RAW, 'The name of the custom field'),
-                                     'shortname' => new external_value(PARAM_ALPHANUMEXT, 'The shortname of the custom field'),
-                                     'type'  => new external_value(PARAM_COMPONENT,
-                                         'The type of the custom field - text, checkbox...'),
-                                     'valueraw' => new external_value(PARAM_RAW, 'The raw value of the custom field'),
-                                     'value' => new external_value(PARAM_RAW, 'The value of the custom field')]
-                                ), 'Custom fields and associated values', VALUE_OPTIONAL),
-                            ], 'course'
-                )
+                        VALUE_OPTIONAL
+                    ),
+                    'groupmode' => new external_value(
+                        PARAM_INT,
+                        'no group, separate, visible',
+                        VALUE_OPTIONAL
+                    ),
+                    'groupmodeforce' => new external_value(
+                        PARAM_INT,
+                        '1: yes, 0: no',
+                        VALUE_OPTIONAL
+                    ),
+                    'defaultgroupingid' => new external_value(
+                        PARAM_INT,
+                        'default grouping id',
+                        VALUE_OPTIONAL
+                    ),
+                    'timecreated' => new external_value(
+                        PARAM_INT,
+                        'timestamp when the course have been created',
+                        VALUE_OPTIONAL
+                    ),
+                    'timemodified' => new external_value(
+                        PARAM_INT,
+                        'timestamp when the course have been modified',
+                        VALUE_OPTIONAL
+                    ),
+                    'enablecompletion' => new external_value(
+                        PARAM_INT,
+                        'Enabled, control via completion and activity settings. Disabled,
+                                    not shown in activity settings.',
+                        VALUE_OPTIONAL
+                    ),
+                    'completionnotify' => new external_value(
+                        PARAM_INT,
+                        '1: yes 0: no',
+                        VALUE_OPTIONAL
+                    ),
+                    'lang' => new external_value(
+                        PARAM_SAFEDIR,
+                        'forced course language',
+                        VALUE_OPTIONAL
+                    ),
+                    'forcetheme' => new external_value(
+                        PARAM_PLUGIN,
+                        'name of the force theme',
+                        VALUE_OPTIONAL
+                    ),
+                    'courseformatoptions' => new external_multiple_structure(
+                        new external_single_structure(
+                            [
+                                'name' => new external_value(PARAM_ALPHANUMEXT, 'course format option name'),
+                                'value' => new external_value(PARAM_RAW, 'course format option value'),
+                            ]
+                        ),
+                        'additional options for particular course format',
+                        VALUE_OPTIONAL
+                    ),
+                    'showactivitydates' => new external_value(PARAM_BOOL, 'Whether the activity dates are shown or not'),
+                    'showcompletionconditions' => new external_value(
+                        PARAM_BOOL,
+                        'Whether the activity completion conditions are shown or not'
+                    ),
+                    'customfields' => new external_multiple_structure(
+                        new external_single_structure(
+                            [
+                                'name' => new external_value(PARAM_RAW, 'The name of the custom field'),
+                                'shortname' => new external_value(PARAM_ALPHANUMEXT, 'The shortname of the custom field'),
+                                'type'  => new external_value(
+                                    PARAM_COMPONENT,
+                                    'The type of the custom field - text, checkbox...'
+                                ),
+                                'valueraw' => new external_value(PARAM_RAW, 'The raw value of the custom field'),
+                                'value' => new external_value(PARAM_RAW, 'The value of the custom field'),
+                            ]
+                        ),
+                        'Custom fields and associated values',
+                        VALUE_OPTIONAL
+                    ),
+                ],
+                'course'
+            )
         );
     }
 
@@ -155,14 +222,10 @@ class get_course_info extends external_api {
         require_once($CFG->dirroot . "/course/lib.php");
 
         // Validate parameter.
-        [
-            'courseid' => $courseid
-        ] = self::validate_parameters(self::execute_parameters(), [
-            'courseid' => $courseid,
-        ]);
+        ['courseid' => $courseid] = self::validate_parameters(self::execute_parameters(), ['courseid' => $courseid], );
 
         // Retrieve course.
-            $course = $DB->get_record('course', ['id' => $courseid]);
+        $course = $DB->get_record('course', ['id' => $courseid]);
 
         // Create return value.
         $coursesinfo = [];
@@ -248,12 +311,13 @@ class get_course_info extends external_api {
             }
         }
 
-        if ($courseadmin || $course->visible
-                || has_capability('moodle/course:viewhiddencourses', $context)) {
+        if (
+            $courseadmin || $course->visible
+            || has_capability('moodle/course:viewhiddencourses', $context)
+        ) {
             $coursesinfo[] = $courseinfo;
         }
 
         return $coursesinfo;
     }
 }
-

@@ -18,12 +18,12 @@
  * Version details
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2025012706;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2025012707;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2022111800;        // Requires this Moodle version.
 $plugin->component = 'local_graidy';     // Full name of the plugin (used for diagnostics).

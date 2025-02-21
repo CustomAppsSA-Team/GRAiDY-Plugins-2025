@@ -18,7 +18,7 @@
  * Capability definitions for this plugin.
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

@@ -18,21 +18,20 @@
  * Web service for get_course_content
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- namespace local_graidy\external\course;
+namespace local_graidy\external\course;
 
- use external_api;
- use external_function_parameters;
- use external_single_structure;
- use external_multiple_structure;
- use external_value;
- use context_course;
+use external_api;
+use external_function_parameters;
+use external_single_structure;
+use external_multiple_structure;
+use external_value;
+use context_course;
 
 defined('MOODLE_INTERNAL') || die;
-
 
 require_once("{$CFG->libdir}/externallib.php");
 
@@ -40,22 +39,16 @@ require_once("{$CFG->libdir}/externallib.php");
  * Class for get_course_content
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class get_course_content extends external_api {
 
     /**
-     * Returns description of method parameters
+     * Defines the expected parameters for the execute function.
+     *
      * @return external_function_parameters
      */
-    // public static function execute_parameters() {
-    //     return new external_function_parameters([
-    //         new external_single_structure([
-    //             'courseid' => new external_value(PARAM_INT, 'Course ID', VALUE_REQUIRED)
-    //         ])
-    //     ]);
-    // }
     public static function execute_parameters() {
         return new external_function_parameters(
             [
@@ -64,41 +57,40 @@ class get_course_content extends external_api {
         );
     }
 
-
     /**
      * Execute the function logic.
      */
     public static function execute($courseid) {
         global $DB, $USER;
-    
+
         // Validate parameters.
         $params = self::validate_parameters(self::execute_parameters(), ['courseid' => $courseid]);
-    
+
         // Get the course context and validate access.
         $context = context_course::instance($courseid);
         self::validate_context($context);
-    
+
         // Capability check: Ensure the user has the capability to view the course.
         require_capability('moodle/course:view', $context);
-    
+
         // Fetch course sections.
         $sections = $DB->get_records('course_sections', ['course' => $courseid], 'section ASC');
-    
+
         // Get modinfo for this course.
         $modinfo = get_fast_modinfo($courseid, $USER->id);
-    
+
         // Initialize the response.
         $response = [];
-    
+
         foreach ($sections as $section) {
             // Check if the section is visible to the user.
             $sectionvisible = $section->visible || has_capability('moodle/course:viewhiddensections', $context);
-    
+
             // Get section modules.
             $sectioninfo = $modinfo->get_section_info_all();
             $sectionmodules = isset($sectioninfo[$section->id]) ? $sectioninfo[$section->id]->sequence : '';
             $moduleids = explode(',', $sectionmodules);
-    
+
             $modules = [];
             foreach ($moduleids as $cmid) {
                 if (!isset($modinfo->cms[$cmid])) {
@@ -108,12 +100,12 @@ class get_course_content extends external_api {
                 if (!$cm->uservisible) {
                     continue; // Skip modules not visible to the user.
                 }
-    
+
                 // Check if the module has associated content.
                 $fs = get_file_storage();
                 $files = $fs->get_area_files($cm->context->id, $cm->modname, 'content', false, 'sortorder', false);
                 $hascontent = !empty($files);
-    
+
                 // Module details.
                 $modules[] = [
                     'id' => $cm->id,
@@ -124,7 +116,7 @@ class get_course_content extends external_api {
                     'visible' => $cm->visible,
                     'uservisible' => $cm->uservisible,
                     'visibleoncoursepage' => $cm->visibleoncoursepage,
-                    'modicon' => '',//$cm->get_icon_url(),
+                    'modicon' => '',
                     'modname' => $cm->modname,
                     'modplural' => get_string('modulenameplural', $cm->modname),
                     'availability' => $cm->availability,
@@ -157,7 +149,7 @@ class get_course_content extends external_api {
                     ],
                 ];
             }
-    
+
             // Add section data.
             $response[] = [
                 'id' => $section->id,
@@ -171,11 +163,13 @@ class get_course_content extends external_api {
                 'modules' => $modules,
             ];
         }
-    
+
         return $response;
     }
-    
 
+    /**
+     * Execute the function logic return.
+     */
     public static function execute_returns() {
         return new external_multiple_structure(
             new external_single_structure(
@@ -281,7 +275,5 @@ class get_course_content extends external_api {
                 ]
             )
         );
-    }    
-
+    }
 }
-

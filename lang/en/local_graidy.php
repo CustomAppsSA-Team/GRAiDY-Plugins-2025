@@ -18,7 +18,7 @@
  * Strings for component 'graidy', language 'en'
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,9 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'GRAiDY';
 $string['privacy:metadata'] = 'The GRAiDY plugin provides extended functionality to access Moodle data via Web Services. It does not store any personal data.';
-
-// Settings.
-// admin_setting_custom_webservicesoverview.php.
 $string['plugin_heading'] = 'GRAiDY Plugin';
 $string['baseurl'] = 'Base URL';
 $string['baseurl_desc'] = 'Enter the base URL of your GRAiDY instance. Example: https://portal.graidy.tech';
@@ -39,6 +36,14 @@ $string['organizationtoken_desc'] = 'Enter the organization API Key of your GRAi
 $string['organizationtoken_heading'] = 'GRAiDY organization API Key';
 $string['organizationtoken_heading_desc'] = 'Configure the GRAiDY organization instance that this Moodle site will connect to.';
 $string['welcome'] = 'Welcome to GRAiDY';
+$string['registration_info'] = 'To connect your Moodle instance with GRAiDY, you need to register your organization.<br>
+<strong>Steps to Get Started:</strong><br>
+1. Register your organization by visiting <a href="https://portal.graidy.tech/register" target="_blank">https://portal.graidy.tech/register</a><br>
+2. Log in to your GRAiDY portal and complete your organization registration. <br>
+3. Update your Moodle URL under your "Preferences". <br> <strong>Use this Moodle URL:</strong> <code>{$a}</code><br>
+4. Go to "API / Integrations" and copy your organization API key.<br>
+5. Paste the API key in the field below to complete the setup.<br><br>
+Need help? Contact <a href="mailto:support@graidy.tech">support@graidy.tech</a>.';
 $string['graidy_settings'] = 'GRAiDY Settings';
 $string['graidy_description'] = 'AI-Powered grading & analytics for Moodle';
 $string['graidy_grading_button'] = 'GRAiDY Grading';

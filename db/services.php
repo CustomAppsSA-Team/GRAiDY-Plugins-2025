@@ -18,7 +18,7 @@
  * Web service for local_graidy
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -74,13 +74,13 @@ $functions = [
         'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     'local_graidy_gradereport_user_get_grades_table' => [
-    'classname' => 'gradereport_user\\external\\user',
-    'methodname' => 'get_grades_table',
-    'classpath'   => 'grade/report/user/classes/external/user.php',
-    'description' => 'Retrieve a table of grades for a specific user.',
-    'type'        => 'read',
-    'ajax'        => true,
-    'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+        'classname' => 'gradereport_user\\external\\user',
+        'methodname' => 'get_grades_table',
+        'classpath'   => 'grade/report/user/classes/external/user.php',
+        'description' => 'Retrieve a table of grades for a specific user.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     'local_graidy_mod_page_get_pages_by_courses' => [
         'classname'   => 'mod_page_external',
@@ -134,120 +134,55 @@ $functions = [
         'ajax'        => true,
         'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
-    'local_graidy_core_enrol_get_enrolled_users' => [ 
-    'classname'   => 'core_enrol_external',
-    'methodname'  => 'get_enrolled_users',
-    'classpath'   => 'enrol/externallib.php',
-    'description' => 'Retrieve a list of users enrolled in a specific course.',
-    'type'        => 'read',
-    'ajax'        => true,
-    'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+    'local_graidy_core_enrol_get_enrolled_users' => [
+        'classname'   => 'core_enrol_external',
+        'methodname'  => 'get_enrolled_users',
+        'classpath'   => 'enrol/externallib.php',
+        'description' => 'Retrieve a list of users enrolled in a specific course.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     'local_graidy_mod_assign_save_grade' => [
-    'classname'   => 'mod_assign_external',
-    'methodname'  => 'save_grade',
-    'classpath'   => 'mod/assign/externallib.php',
-    'description' => 'Save a grade for a student in an assignment.',
-    'type'        => 'write',
-    'capabilities' => 'mod/assign:grade, moodle/grade:edit',
-    'ajax'        => true,
-    'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+        'classname'   => 'mod_assign_external',
+        'methodname'  => 'save_grade',
+        'classpath'   => 'mod/assign/externallib.php',
+        'description' => 'Save a grade for a student in an assignment.',
+        'type'        => 'write',
+        'capabilities' => 'mod/assign:grade, moodle/grade:edit',
+        'ajax'        => true,
+        'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     'local_graidy_mod_quiz_get_quizzes_by_courses' => [
-    'classname'   => 'mod_quiz_external',
-    'methodname'  => 'get_quizzes_by_courses',
-    'classpath'   => 'mod/quiz/externallib.php',
-    'description' => 'Retrieve a list of quizzes from specified courses.',
-    'type'        => 'read',
-    'ajax'        => true,
-    'capabilities' => 'mod/quiz:view, moodle/course:view',
-    'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+        'classname'   => 'mod_quiz_external',
+        'methodname'  => 'get_quizzes_by_courses',
+        'classpath'   => 'mod/quiz/externallib.php',
+        'description' => 'Retrieve a list of quizzes from specified courses.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities' => 'mod/quiz:view, moodle/course:view',
+        'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     'local_graidy_mod_quiz_get_user_attempts' => [
-    'classname'   => 'mod_quiz_external',
-    'methodname'  => 'get_user_attempts',
-    'classpath'   => 'mod/quiz/externallib.php',
-    'description' => 'Retrieve a list of quiz attempts by a specific user.',
-    'type'        => 'read',
-    'ajax'        => true,
-    'capabilities' => 'mod/quiz:view, moodle/course:view, mod/quiz:attempt, mod/quiz:viewreports, moodle/user:viewdetails',
-    'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+        'classname'   => 'mod_quiz_external',
+        'methodname'  => 'get_user_attempts',
+        'classpath'   => 'mod/quiz/externallib.php',
+        'description' => 'Retrieve a list of quiz attempts by a specific user.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities' => 'mod/quiz:view, moodle/course:view, mod/quiz:attempt, mod/quiz:viewreports, moodle/user:viewdetails',
+        'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     'local_graidy_mod_quiz_get_attempt_review' => [
-    'classname'   => 'mod_quiz_external',
-    'methodname'  => 'get_attempt_review',
-    'classpath'   => 'mod/quiz/externallib.php',
-    'description' => 'Retrieve the review information for a specific quiz attempt.',
-    'type'        => 'read',
-    'ajax'        => true,
-    'capabilities' => 'mod/quiz:reviewmyattempts, mod/quiz:viewreports',
-    'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+        'classname'   => 'mod_quiz_external',
+        'methodname'  => 'get_attempt_review',
+        'classpath'   => 'mod/quiz/externallib.php',
+        'description' => 'Retrieve the review information for a specific quiz attempt.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities' => 'mod/quiz:reviewmyattempts, mod/quiz:viewreports',
+        'services'    => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
-    // 'local_graidy_get_course_modules' => [
-    //     'classname'   => 'local_graidy\external\course\get_course_modules',
-    //     'description' => 'Get course modules.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_get_assign_submissions' => [
-    //     'classname'   => 'local_graidy\external\mod\assign\get_assign_submissions',
-    //     'description' => 'Get assignment submissions.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_update_assign_activity' => [
-    //     'classname'   => 'local_graidy\external\mod\assign\update_assign_activity',
-    //     'description' => 'Updates the user\'s assignment activity with new marks and feedback.',
-    //     'type'        => 'write',
-    // ],
-    // 'local_graidy_get_quiz_submissions' => [
-    //     'classname'   => 'local_graidy\external\mod\quiz\get_quiz_submissions',
-    //     'description' => 'Get quiz submissions.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_update_quiz_activity' => [
-    //     'classname'   => 'local_graidy\external\mod\quiz\update_quiz_activity',
-    //     'description' => 'Updates the user\'s quiz activity with new scores and feedback.',
-    //     'type'        => 'write',
-    // ],
-    // 'local_graidy_get_workshop_submissions' => [
-    //     'classname'   => 'local_graidy\external\mod\workshop\get_workshop_submissions',
-    //     'description' => 'Get workshop submissions.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_update_workshop_activity' => [
-    //     'classname'   => 'local_graidy\external\mod\workshop\update_workshop_activity',
-    //     'description' => 'Updates the user\'s workshop activity with new marks and feedback.',
-    //     'type'        => 'write',
-    // ],
-    // 'local_graidy_get_lesson_submissions' => [
-    //     'classname'   => 'local_graidy\external\mod\lesson\get_lesson_submissions',
-    //     'description' => 'Get lesson submissions.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_update_lesson_activity' => [
-    //     'classname'   => 'local_graidy\external\mod\lesson\update_lesson_activity',
-    //     'description' => 'Updates the user\'s lesson activity with new marks and feedback.',
-    //     'type'        => 'write',
-    // ],
-    // 'local_graidy_get_forum_submissions' => [
-    //     'classname'   => 'local_graidy\external\mod\forum\get_forum_submissions',
-    //     'description' => 'Get forum submissions.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_update_forum_activity' => [
-    //     'classname'   => 'local_graidy\external\mod\forum\update_forum_activity',
-    //     'description' => 'Updates the user\'s forum activity with new marks and feedback.',
-    //     'type'        => 'write',
-    // ],
-    // 'local_graidy_get_scorm_submissions' => [
-    //     'classname'   => 'local_graidy\external\mod\scorm\get_scorm_submissions',
-    //     'description' => 'Get SCORM submissions.',
-    //     'type'        => 'read',
-    // ],
-    // 'local_graidy_update_scorm_activity' => [
-    //     'classname'   => 'local_graidy\external\mod\scorm\update_scorm_activity',
-    //     'description' => 'Updates the user\'s SCORM activity with new marks and feedback.',
-    //     'type'        => 'write',
-    // ],
 ];
 
 // Defining a pre-built service with the following web services available.
@@ -260,7 +195,7 @@ $services = [
         // A list of external functions available in this service.
         'functions' => [
             'local_graidy_get_course_info',
-            'local_graidy_core_course_get_courses', 
+            'local_graidy_core_course_get_courses',
             'local_graidy_core_user_get_users',
             'local_graidy_get_course_content',
             'local_graidy_mod_assign_get_assignments',
@@ -275,20 +210,7 @@ $services = [
             'local_graidy_mod_assign_save_grade',
             'local_graidy_mod_quiz_get_quizzes_by_courses',
             'local_graidy_mod_quiz_get_user_attempts',
-            'local_graidy_mod_quiz_get_attempt_review'
-            // 'local_graidy_get_course_modules',
-            // 'local_graidy_get_assign_submissions',
-            // 'local_graidy_update_assign_activity',
-            // 'local_graidy_get_quiz_submissions',
-            // 'local_graidy_update_quiz_activity',
-            // 'local_graidy_get_workshop_submissions',
-            // 'local_graidy_update_workshop_activity',
-            // 'local_graidy_get_lesson_submissions',
-            // 'local_graidy_update_lesson_activity',
-            // 'local_graidy_get_forum_submissions',
-            // 'local_graidy_update_forum_activity',
-            // 'local_graidy_get_scorm_submissions',
-            // 'local_graidy_update_scorm_activity',
+            'local_graidy_mod_quiz_get_attempt_review',
         ],
 
         // If set, the external service user will need this capability to access
@@ -303,6 +225,6 @@ $services = [
 
         // This field os optional, but requried if the `restrictedusers` value is
         // set, so as to allow configuration via the Web UI.
-        'shortname' =>  'local_graidy',
+        'shortname' => 'local_graidy',
     ],
 ];

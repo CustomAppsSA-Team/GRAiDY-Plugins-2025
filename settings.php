@@ -18,7 +18,7 @@
  * Settings file.
  *
  * @package    local_graidy
- * @copyright  2024 onwards We Envision Ai
+ * @copyright  2025 We Envision AI <info@weenvisionai.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -34,24 +34,16 @@ if ($hassiteconfig) {
 
     $ADMIN->add('localplugins', new admin_category('local_graidy', get_string('plugin_heading', 'local_graidy')));
 
-    $site_url = preg_replace('/\/admin.*/', '', get_config('moodle', 'wwwroot')); // Removes /admin or any trailing path
- 
+    $siteurl = preg_replace('/\/admin.*/', '', get_config('moodle', 'wwwroot')); // Removes /admin or any trailing path.
 
     $settings->add(new admin_setting_heading(
         'local_graidy/registration_info',
         get_string('welcome', 'local_graidy'),
-        'To connect your Moodle instance with GRAiDY, you need to register your organization.<br>
-        <strong>Steps to Get Started:</strong><br>
-        1. Register your organization by visiting <a href="https://portal.graidy.tech/register" target="_blank">https://portal.graidy.tech/register</a><br>
-        2. Log in to your GRAiDY portal and complete your organization registration. <br>
-        3. Update your Moodle URL under your "Preferences". <br>  <strong>Use this Moodle URL:</strong> <code>' . $site_url . '</code><br>
-        4. Go to "API / Integrations" and copy your organization API key.<br>
-        5. Paste the API key in the field below to complete the setup.<br><br>
-        Need help? Contact <a href="mailto:support@graidy.tech">support@graidy.tech</a>.'
+        get_string('registration_info', 'local_graidy', $siteurl)
     ));
 
-     // Add a heading for the Base URL section
-     $settings->add(new admin_setting_heading(
+     // Add a heading for the Base URL section.
+    $settings->add(new admin_setting_heading(
         'local_graidy/baseurl_heading',
         get_string('baseurl_heading', 'local_graidy'),
         get_string('baseurl_heading_desc', 'local_graidy')
@@ -74,14 +66,9 @@ if ($hassiteconfig) {
             '',
             PARAM_TEXT
         ));
-
-        
-
     // Include the custom settings class.
     require_once(dirname(__FILE__) . '/classes/settings/admin_setting_custom_webservicesoverview.php');
     $settings->add(new admin_setting_custom_webservicesoverview());
-
     // Register settings page.
     $ADMIN->add('localplugins', $settings);
-    
 }
