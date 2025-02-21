@@ -48,11 +48,12 @@ GRAiDY is an advanced AI grading tool that seamlessly integrates with Moodle, em
 ### Cloning the plugin from the Git repo
 
 1. **Navigate to Moodle Directory**  
-    cd moodle/local/
+
+        cd moodle/local/
 
 2. **Clone the Repository**  
-    git clone https://github.com/CustomAppsSA-Team/GRAiDY-Plugins.git graidy
 
+        git clone https://github.com/WeEnvisionAi/moodle-local_graidy.git graidy
 
 3. **Navigate to the Moodle Frontend**  
     Follow the installation instructions on the Moodle frontend.
@@ -76,7 +77,6 @@ To connect your Moodle instance with GRAiDY, follow these steps:
 
 2. **Complete Organization Registration**  
     Log in to your GRAiDY portal and finish your organization registration.
-
 
 3. **Update Moodle URL**  
     Under "Preferences," update your Moodle instance site URL
@@ -103,22 +103,25 @@ To connect your Moodle instance with GRAiDY, follow these steps:
 2. **Enable rest protocols**  
     At least one protocol should be enabled.
 
-3. **Create a specific user (Optional)**  
-    A web services user is required to represent the system controlling Moodle.
+3. **Add a new user (optional)**  
+    Create a new user to use the plugin.
 
-4. **Assign role**  
-    Assign "GRAiDY Web Service" role to the user or teachers you want to have access to the GRAiDY feature. The `graidy_webservice.xml` is the role preset required to access course information and activities and student attempts
+4. **Adding a new role**  
+    Create new "GRAiDY Web Service" role. The `graidy_webservice.xml` is the role preset required to access course information and activities and student attempts. Adding this service will also create the `GRAiDY Service` You only need to do this once.
 
-5. **Select a service**  
-    A service is a set of web service functions. You will allow the user to access to this service. On the Add service page check 'Enable' and 'Authorised users' options.
+5. **Enable Graidy service**  
+    You will need to edit the Graidy Service and allow users to access to this service. On the edit page check 'Enable' and 'Authorised users' options.
 
-6. **Select a specific user**  
-    Add the web services user as an authorised user.
+    Next you need to click the `show more...` tab and make sure the `Can download files` checkbox is selected, in order for GRAiDY to be able to access the submitted files on student attempts.
 
-7. **Create a token for a user**  
-    Create a token for the user created in the previous step. This token will be used by GRAiDY to authenticate with Moodle.
+6. **Authorise users**  
+    You need to go to the `Authorised users` for the `GRAiDY Service` and select the newly created user or teachers you want to have access to the GRAiDY feature.
+
+7. **Create user tokens**  
+    Create a token for the authorised users created in the previous step. This token will be used by GRAiDY to authenticate with Moodle on behalf of the user. The Token will used to authenticate the user between GRAiDY and your Moodle instance and provide access to the GRAiDY tab and feature on the course and activity pages.
 
 ## Getting Started with GRAiDY
+
 Experience Seamless AI Grading with Moodle & GRAiDY
 
 Enhance your Moodle assessments with:
@@ -129,6 +132,7 @@ Enhance your Moodle assessments with:
 * **Upto 200 Free Credits on Registration**: Start grading today with no upfront cost.
 
 ## Support & Documentation
+
 For more information, visit:
 
 
@@ -141,9 +145,5 @@ For more information, visit:
 For support or more complex inquiries, please contact customer support:
 
 ✉️  [info@graidy.tech](mailto:info@graidy.tech)
- 
-☎️ [](tel:27310125253)
- 
-    Phone : +27 31 0125 253
 
-    
+☎️ [+27 31 0125 253](tel:+27310125253)
