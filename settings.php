@@ -38,7 +38,7 @@ if ($hassiteconfig) {
 
     $settings->add(new admin_setting_heading(
         'local_graidy/registration_info',
-        get_string('welcome', 'local_graidy'),
+        get_string('registration_get_started', 'local_graidy'),
         get_string('registration_info', 'local_graidy', $siteurl)
     ));
 

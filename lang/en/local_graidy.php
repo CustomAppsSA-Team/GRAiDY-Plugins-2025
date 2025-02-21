@@ -36,14 +36,14 @@ $string['organizationtoken_desc'] = 'Enter the organization API Key of your GRAi
 $string['organizationtoken_heading'] = 'GRAiDY organization API Key';
 $string['organizationtoken_heading_desc'] = 'Configure the GRAiDY organization instance that this Moodle site will connect to.';
 $string['welcome'] = 'Welcome to GRAiDY';
+$string['registration_get_started'] = 'Steps to Get Started';
 $string['registration_info'] = 'To connect your Moodle instance with GRAiDY, you need to register your organization.<br>
-<strong>Steps to Get Started:</strong><br>
 1. Register your organization by visiting <a href="https://portal.graidy.tech/register" target="_blank">https://portal.graidy.tech/register</a><br>
 2. Log in to your GRAiDY portal and complete your organization registration. <br>
 3. Update your Moodle URL under your "Preferences". <br> <strong>Use this Moodle URL:</strong> <code>{$a}</code><br>
 4. Go to "API / Integrations" and copy your organization API key.<br>
 5. Paste the API key in the field below to complete the setup.<br><br>
-Need help? Contact <a href="mailto:support@graidy.tech">support@graidy.tech</a>.';
+Need help? Contact <a href="mailto:info@graidy.tech">info@graidy.tech</a>.';
 $string['graidy_settings'] = 'GRAiDY Settings';
 $string['graidy_description'] = 'AI-Powered grading & analytics for Moodle';
 $string['graidy_grading_button'] = 'GRAiDY Grading';
@@ -86,3 +86,12 @@ $string['enabledocumentationdesc'] = 'Detailed web services documentation is ava
 $string['tab_assign'] = 'Graidy Module Overview';
 $string['tab_quiz'] = 'Graidy Module Overview';
 $string['tab_course'] = 'Graidy Course Overview';
+$string['graidy_portal'] = 'Graidy Portal';
+$string['graidy_portal_privacy_description'] = 'The following user data is sent to GRAiDY for authentication and tracking:';
+$string['privacy_userid'] = 'The Moodle user ID';
+$string['privacy_email'] = 'The user’s email address';
+$string['privacy_username'] = 'The user’s Moodle username';
+$string['privacy_firstname'] = 'The user’s Moodle firstname';
+$string['privacy_lastname'] = 'The user’s Moodle lastname';
+$string['privacy_role'] = 'The user’s role in Moodle';
+$string['privacy_token'] = 'The user’s token for the webservice';

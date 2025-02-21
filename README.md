@@ -1,41 +1,149 @@
-# Local GRAiDY
+# Welcome to GRAiDY
 
-# Installation
+We appreciate your interest in the GRAiDY project.
 
-## Downloading the plugin as a zipped folder
-1. Unzip the plugin folder.
-2. Copy the plugin folder into moodle/local/.
-3. Navigate to the Moodle frontend and follow the installation instructions.
-4. Once installed, navigate to /admin/settings.php?section=local_graidy_settings and follow the Web Service setup instructions.
-5. Once the token is generated, provide the token to your GRAiDY representative.
+GRAiDY is designed to revolutionize the way assessments are managed and graded, making the process more efficient and insightful.
 
-## Cloning the plugin from the Git repo
-1. cd into moodle/local/.
-2. git clone https://github.com/CustomAppsSA-Team/GRAiDY-Plugins.git graidy.
-3. Navigate to the Moodle frontend and follow the installation instructions.
-4. Once installed, navigate to /admin/settings.php?section=local_graidy_settings and follow the Web Service setup instructions.
-5. Once the token is generated, provide the token to your GRAiDY representative.
+To learn more about GRAiDY and explore its features, visit:
 
-# Development
+[🌐 WeEnvisionAI / WeAi](www.weenvisionai.com)
 
-## Adding Web service functions
+[🌐 GRAiDY Website](https://graidy.tech)
 
-All the Web service functions are defined in graidy/db/services.php and the code is stored in graidy/classes/external/*.
-The Web service functions have been broken into their "types" e.g. course or mod. There are some example files set up already.
+[🌐 GRAiDY Pricing](https://portal.graidy.tech/pricing)
 
-In services.php, you will find two example functions defined:
-1. local_graidy_get_course_info - this is the custom function which has the code stored in graidy/classes/external/course/get_course_info.php.
-2. local_graidy_course_get_courses - this is utilising Moodle's Core Web service function course_get_courses.
+## Revolutionizing Exam & Essay Marking with AI!
 
-These examples explain how to add a custom function into the GRAiDY plugin that might be needed or how to reference a Core Web service function without having to write all the code from scratch. It's up to the developer to choose which approach is best depending on the requirements.
+GRAiDY is an advanced AI grading tool that seamlessly integrates with Moodle, empowering educators to grade assignments and quizzes with ease. Say goodbye to manual marking and hello to automated feedback, powerful analytics, and efficient grading workflows.
 
-The existing commented code can be uncommented and the corresponding Web service files updated when necessary.
+### Why Choose GRAiDY?
 
-See Moodle's documentation for guidance on making changes. For an example, see [Writing a service](https://moodledev.io/docs/4.1/apis/subsystems/external/writing-a-service).
+* **Effortless Integration**: Works directly with Moodle assign and quiz activities. No major change management required.
+* **Smart AI Grading**: Utilize cutting-edge AI for accurate and consistent grading across various assessment types.
+* **Feedback Automation**: Provide personalized feedback instantly, saving time and enhancing student learning.
+* **Powerful Analytics**: Gain insights into student performance and assessment effectiveness.
+* **Flexible Pricing**: Start grading today with upto 200 Free Credits!
 
-## Updating the role export
-1. Ensure the role is already uploaded in Site administration > Users > Permissions > Define roles.
-2. Click on the settings cog to edit the role.
-3. Once the role has been updated, click the Export button.
-4. Copy the file into the local/graidy plugin.
-5. If you update the role name, ensure that you change the linked reference to it (variable name $roledownloadurl) in classes/settings/admin_setting_custom_webservicesoverview.php.
+## Plugin Installation Guide
+
+### Downloading the plugin as a Zipped folder
+
+1. **Unzip the Plugin Folder**  
+    Extract the downloaded plugin folder.
+
+2. **Copy the Plugin Folder**  
+    Copy the unzipped folder into the `moodle/local/` directory.
+
+3. **Navigate to the Moodle Frontend**  
+    Follow the installation instructions on the Moodle frontend.
+
+4. **Web Service Setup**  
+    After installation, navigate to:  
+    `/admin/settings.php?section=local_graidy_settings`  
+    Follow the Web Service setup instructions.
+
+5. **Generate Tokens**  
+    Once the tokens are generated for your GRAiDY representative(s), they will be able to use GRAiDY on their course assign and quiz activities.
+
+### Cloning the plugin from the Git repo
+
+1. **Navigate to Moodle Directory**  
+    cd moodle/local/
+
+2. **Clone the Repository**  
+    git clone https://github.com/CustomAppsSA-Team/GRAiDY-Plugins.git graidy
+
+
+3. **Navigate to the Moodle Frontend**  
+    Follow the installation instructions on the Moodle frontend.
+
+4. **Web Service Setup**  
+    After installation, navigate to:  
+    `/admin/settings.php?section=local_graidy_settings`  
+    Follow the Web Service setup instructions.
+
+5. **Generate User Tokens**  
+    Once the tokens are generated for your GRAiDY representative(s), they will be able to use GRAiDY on their course assign and quiz activities.
+
+## GRAiDY Setup Instructions
+
+### GRAiDY Server Configuration
+
+To connect your Moodle instance with GRAiDY, follow these steps:
+
+1. **Register Your Organization**  
+    Visit https://portal.graidy.tech/register to sign up.
+
+2. **Complete Organization Registration**  
+    Log in to your GRAiDY portal and finish your organization registration.
+
+
+3. **Update Moodle URL**  
+    Under "Preferences," update your Moodle instance site URL
+
+4. **Get Your Organization API Key**  
+    Go to API / Integrations in GRAiDY and copy your organization API key.
+
+5. **Complete Setup**  
+    Configure the GRAiDY server instance that this Moodle site will connect to.
+
+        https://portal.graidy.tech
+
+    Paste the API key into the settings field in Moodle to complete the setup.
+
+        Example: xxxxx-xxxx-xxxx-xxxx
+
+### Allow GRAiDY Access to Moodle
+
+To connect your Moodle instance with GRAiDY, follow these steps:
+
+1. **Enable web services**  
+    Web services must be enabled in Advanced features.
+
+2. **Enable rest protocols**  
+    At least one protocol should be enabled.
+
+3. **Create a specific user (Optional)**  
+    A web services user is required to represent the system controlling Moodle.
+
+4. **Assign role**  
+    Assign "GRAiDY Web Service" role to the user or teachers you want to have access to the GRAiDY feature. The `graidy_webservice.xml` is the role preset required to access course information and activities and student attempts
+
+5. **Select a service**  
+    A service is a set of web service functions. You will allow the user to access to this service. On the Add service page check 'Enable' and 'Authorised users' options.
+
+6. **Select a specific user**  
+    Add the web services user as an authorised user.
+
+7. **Create a token for a user**  
+    Create a token for the user created in the previous step. This token will be used by GRAiDY to authenticate with Moodle.
+
+## Getting Started with GRAiDY
+Experience Seamless AI Grading with Moodle & GRAiDY
+
+Enhance your Moodle assessments with:
+
+* **AI-Powered Grading**: Fast, consistent, and accurate grading.
+* **Feedback Automation**: Personalized feedback without manual effort.
+* **Actionable Insights**: Powerful analytics to improve learning outcomes.
+* **Upto 200 Free Credits on Registration**: Start grading today with no upfront cost.
+
+## Support & Documentation
+For more information, visit:
+
+
+[🌐 GRAiDY Portal Help & Support](https://portal.graidy.tech/support)
+
+[🌐 GRAiDY Portal Documentation & Tutorials](https://portal.graidy.tech/support/docs)
+
+[🌐 GRAiDY Portal Pricing](https://portal.graidy.tech/pricing)
+
+For support or more complex inquiries, please contact customer support:
+
+✉️  [info@graidy.tech](mailto:info@graidy.tech)
+ 
+☎️ [](tel:27310125253)
+ 
+    Phone : +27 31 0125 253
+
+    

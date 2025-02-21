@@ -24,6 +24,9 @@
 
 namespace local_graidy\privacy;
 
+use core_privacy\local\metadata\collection;
+
+defined('MOODLE_INTERNAL') || die();
 /**
  * Privacy Subsystem implementing null_provider.
  *
@@ -41,5 +44,29 @@ class provider implements \core_privacy\local\metadata\null_provider {
      */
     public static function get_reason(): string {
         return 'privacy:metadata';
+    }
+
+    /**
+     * Returns metadata about data sent to external systems.
+     *
+     * @param collection $collection The metadata collection object.
+     * @return collection The updated metadata collection.
+     */
+    public static function get_metadata(collection $collection): collection {
+        $collection->add_external_location_link(
+            'https://portal.graidy.tech/',
+            get_string('graidy_portal', 'local_graidy'),
+            get_string('graidy_portal_privacy_description', 'local_graidy'),
+            [
+                'userid' => get_string('privacy_userid', 'local_graidy'),
+                'email' => get_string('privacy_email', 'local_graidy'),
+                'firstname' => get_string('privacy_firstname', 'local_graidy'),
+                'username' => get_string('privacy_username', 'local_graidy'),
+                'lastname' => get_string('privacy_lastname', 'local_graidy'),
+                'token' => get_string('privacy_token', 'local_graidy'),
+            ]
+        );
+
+        return $collection;
     }
 }
